@@ -1,17 +1,21 @@
-import { Injectable } from '@nestjs/common';
+import { ConsoleLogger, Injectable } from '@nestjs/common';
 import pino from 'pino';
 
 @Injectable()
-export class LoggerService {
+export class LoggerService extends ConsoleLogger {
   private readonly logger: pino.Logger;
 
   constructor() {
-    const transport = pino.transport({
-      target: 'pino-pretty',
-      options: { destination: 1 },
+    super();
+    this.logger = pino({
+      transport: {
+        target: 'pino-pretty',
+        options: {
+          colorize: true,
+          singleLine: true,
+        },
+      },
     });
-
-    this.logger = pino(transport);
   }
 
   info(context: any, message: string) {
@@ -23,10 +27,10 @@ export class LoggerService {
   }
 
   warn(context: any, message: string) {
-    this.logger.warn(context, message);
+    this.logger.warn(message);
   }
 
   debug(context: any, message: string) {
-    this.logger.debug(context, message);
+    this.logger.debug(message);
   }
 }
