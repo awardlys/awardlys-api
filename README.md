@@ -37,4 +37,4 @@ Encontrou um problema ou tem uma sugestão? 😕 Abra uma [issue](https://github
 
 ## 📜 Licença
 
-Este projeto está licenciado sob a [Licença Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 Internacional](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
