@@ -1,73 +1,40 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 🏆 Awardlys API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Bem-vindo à API oficial da Awardlys! 🚀
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 📖 Sobre o Projeto
 
-## Description
+A `awardlys-api` é o backend da plataforma Awardlys, construída utilizando Node.js e NestJS. Essa API fornece os endpoints necessários para gerenciar votações e categorias.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 🚀 Como Começar
 
-## Installation
+1. **Instalação das Dependências:**
+   - Execute `npm install` para instalar as dependências do projeto.
 
-```bash
-$ npm install
-```
+2. **Configuração do Ambiente:**
+   - Crie um arquivo `.env` na raiz do projeto com as configurações necessárias.
 
-## Running the app
+3. **Execução da Aplicação:**
+   - Execute `npm run start` para iniciar a aplicação.
 
-```bash
-# development
-$ npm run start
+4. **Execução em Modo de Desenvolvimento:**
+   - Execute `npm run start:dev` para iniciar em modo de desenvolvimento.
 
-# watch mode
-$ npm run start:dev
+5. **Execução em Modo de Produção:**
+   - Execute `npm run start:prod` para iniciar em modo de produção.
 
-# production mode
-$ npm run start:prod
-```
+## 🛠 Configuração do Banco de Dados
 
-## Test
+A `awardlys-api` utiliza um banco de dados para armazenar informações relevantes. Certifique-se de configurar corretamente o acesso ao banco de dados no arquivo `.env`.
 
-```bash
-# unit tests
-$ npm run test
+## 🤝 Contribuindo
 
-# e2e tests
-$ npm run test:e2e
+Contribuições são bem-vindas! 🎉 Consulte as diretrizes de contribuição em [CONTRIBUTING.md](CONTRIBUTING.md).
 
-# test coverage
-$ npm run test:cov
-```
+## 🐛 Problemas e Sugestões
 
-## Support
+Encontrou um problema ou tem uma sugestão? 😕 Abra uma [issue](https://github.com/awardlys/awardlys-api/issues) neste repositório.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## 📜 Licença
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Este projeto está licenciado sob a [Licença Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 Internacional](https://creativecommons.org/licenses/by-nc-nd/4.0/).
