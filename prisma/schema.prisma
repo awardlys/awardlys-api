@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Award {
+  id          String   @id
+  title       String
+  subTitle    String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  status      String
+
+  awardCategories AwardCategory[]
+
+  @@map("award")
+}
+
+model Category {
+  id              String          @id
+  description     String
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  awardCategories AwardCategory[]
+
+  @@map("category")
+}
+
+model AwardCategory {
+  id             String         @unique
+  awardId        String
+  categoryId     String
+  award          Award          @relation(fields: [awardId], references: [id])
+  category       Category       @relation(fields: [categoryId], references: [id])
+  gameCategories GameCategory[]
+
+  @@id([id, awardId, categoryId])
+  @@map("award_category")
+}
+
+model Game {
+  id             String         @id
+  title          String
+  description    String
+  platform       String
+  image_url      String?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  gameCategories GameCategory[]
+
+  @@map("game")
+}
+
+model GameCategory {
+  id              String        @unique
+  awardCategoryId String
+  gameId          String
+  awardCategory   AwardCategory @relation(fields: [awardCategoryId], references: [id])
+  game            Game          @relation(fields: [gameId], references: [id])
+  Poll            Poll[]
+
+  @@id([id, gameId, awardCategoryId])
+  @@map("game_category")
+}
+
+model Poll {
+  id             String       @id
+  accountId      String
+  gameCategoryId String
+  pollDate       DateTime
+  account        Account      @relation(fields: [accountId], references: [id])
+  gameCategory   GameCategory @relation(fields: [gameCategoryId], references: [id])
+
+  @@map("poll")
+}
+
+model Account {
+  id           String   @id
+  username     String
+  email        String
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  polls Poll[]
+
+  @@map("account")
+}
