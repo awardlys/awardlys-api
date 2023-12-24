@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateAwardInput {
   @IsString()
@@ -12,4 +12,18 @@ export class CreateAwardInput {
   @IsString()
   @IsNotEmpty()
   description: string;
+}
+
+export class UpdateAwardInput {
+  @IsString()
+  @IsOptional()
+  title?: string;
+
+  @IsString()
+  @IsOptional()
+  subTitle?: string;
+
+  @IsString()
+  @IsOptional()
+  description?: string;
 }

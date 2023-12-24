@@ -1,36 +1,82 @@
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
-import { AwardEntity } from './awards.entity';
+import { AwardEntity, AwardProps } from './awards.entity';
+import { LoggerService } from '../logger/logger.service';
 
 @Injectable()
 export class AwardsRepository {
-  constructor(private readonly db: DatabaseService) {}
+  constructor(
+    private readonly logger: LoggerService,
+    private readonly db: DatabaseService,
+  ) {}
 
   async list() {
-    throw new Error('Culpa de Daniel');
-    return this.db.award.findMany();
+    try {
+      const awards = await this.db.award.findMany();
+
+      return awards.map(
+        (award) => new AwardEntity(award as unknown as AwardProps),
+      );
+    } catch (error) {
+      this.logger.error(error, 'AwardsRepository > list > exception');
+      throw error;
+    }
+  }
+
+  async get(id: string) {
+    try {
+      const output = await this.db.award.findUnique({
+        where: {
+          id,
+        },
+      });
+
+      if (!output) {
+        return undefined;
+      }
+
+      return new AwardEntity(output as unknown as AwardProps);
+    } catch (error) {
+      this.logger.error(error, 'AwardsRepository > get > exception');
+      throw error;
+    }
   }
 
   async create(entity: AwardEntity) {
-    await this.db.award.create({
-      data: entity.toJSON(),
-    });
+    try {
+      await this.db.award.create({
+        data: entity.toJSON(),
+      });
+    } catch (error) {
+      this.logger.error(error, 'AwardsRepository > create > exception');
+      throw error;
+    }
   }
 
   async update(entity: AwardEntity) {
-    await this.db.award.update({
-      data: entity.toJSON(),
-      where: {
-        id: entity.id,
-      },
-    });
+    try {
+      await this.db.award.update({
+        data: entity.toJSON(),
+        where: {
+          id: entity.id,
+        },
+      });
+    } catch (error) {
+      this.logger.error(error, 'AwardsRepository > update > exception');
+      throw error;
+    }
   }
 
   async delete(id: string) {
-    await this.db.award.delete({
-      where: {
-        id,
-      },
-    });
+    try {
+      await this.db.award.delete({
+        where: {
+          id,
+        },
+      });
+    } catch (error) {
+      this.logger.error(error, 'AwardsRepository > delete > exception');
+      throw error;
+    }
   }
 }
