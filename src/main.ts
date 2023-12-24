@@ -1,14 +1,24 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ValidationPipe } from '@nestjs/common';
-import { LoggerService } from './modules/logger/logger.service';
+import * as morgan from 'morgan';
+import { Logger } from 'nestjs-pino';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.useLogger(app.get(LoggerService));
+  const logger = app.get(Logger);
+
+  app.useLogger(logger);
+  app.use(
+    morgan('common', {
+      stream: {
+        write: (message) => {
+          logger.log(message);
+        },
+      },
+    }),
+  );
   app.setGlobalPrefix('api');
-  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(3000);
 }
