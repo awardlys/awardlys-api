@@ -26,4 +26,16 @@ export class AwardEntity {
   get id() {
     return this.props.id;
   }
+
+  set title(title: string) {
+    this.props.title = title;
+  }
+
+  set subTitle(subTitle: string) {
+    this.props.subTitle = subTitle;
+  }
+
+  set description(description: string) {
+    this.props.description = description;
+  }
 }

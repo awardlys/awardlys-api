@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { LoggerService } from '../logger/logger.service';
 import { AwardsRepository } from './awards.repository';
-import { CreateAwardInput } from './dtos/awards.dto';
+import { CreateAwardInput, UpdateAwardInput } from './dtos/awards.dto';
 import { AwardEntity } from './awards.entity';
 import { randomUUID } from 'crypto';
 
@@ -14,17 +14,18 @@ export class AwardsService {
 
   async list() {
     try {
-      this.logger.info({ fullName: 'daniel' }, 'list > params');
+      this.logger.info({}, 'services > awards > list > params');
 
       const output = await this.repository.list();
 
-      this.logger.info({}, 'list > success');
+      this.logger.info({}, 'services > awards > list > success');
 
       return {
         awards: output,
       };
     } catch (error) {
-      this.logger.error(error, 'list > exeception');
+      this.logger.error(error, 'services > awards > list > exeception');
+      throw error;
     }
   }
 
@@ -44,7 +45,31 @@ export class AwardsService {
 
       this.logger.info({}, 'services > awards > create > success');
     } catch (error) {
-      this.logger.error(error, 'create > exeception');
+      this.logger.error(error, 'services > awards > create > exeception');
+      throw error;
+    }
+  }
+
+  async update(id: string, input: UpdateAwardInput) {
+    try {
+      this.logger.info({ id, ...input }, 'services > awards > update > params');
+
+      const entity = await this.repository.get(id);
+
+      this.logger.info(entity, 'entity');
+
+      if (!entity) {
+        throw new NotFoundException('Award not found');
+      }
+
+      Object.assign(entity, input);
+
+      await this.repository.update(entity);
+
+      this.logger.info({}, 'services > awards > update > success');
+    } catch (error) {
+      this.logger.error(error, 'services > awards > update > exeception');
+      throw error;
     }
   }
 
@@ -54,9 +79,10 @@ export class AwardsService {
 
       await this.repository.delete(id);
 
-      this.logger.info({}, 'services > awards > create > success');
+      this.logger.info({}, 'services > awards > delete > success');
     } catch (error) {
-      this.logger.error(error, 'delete > exeception');
+      this.logger.error(error, 'services > awards > delete > exeception');
+      throw error;
     }
   }
 }
