@@ -8,6 +8,7 @@ async function bootstrap() {
 
   const logger = app.get(Logger);
 
+  app.enableCors();
   app.useLogger(logger);
   app.use(
     morgan('common', {

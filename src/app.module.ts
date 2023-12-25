@@ -5,6 +5,7 @@ import { AwardsModule } from './modules/awards/awards.module';
 import { DatabaseModule } from './modules/database/database.module';
 import { LoggerModule } from 'nestjs-pino';
 import { APP_PIPE } from '@nestjs/core';
+import { GamesModule } from './modules/games/games.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { APP_PIPE } from '@nestjs/core';
         },
       },
     }),
+    GamesModule,
   ],
   controllers: [AppController],
   providers: [
