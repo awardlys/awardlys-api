@@ -6,6 +6,7 @@ import { DatabaseModule } from './modules/database/database.module';
 import { LoggerModule } from 'nestjs-pino';
 import { APP_PIPE } from '@nestjs/core';
 import { GamesModule } from './modules/games/games.module';
+import { CategoriesModule } from './modules/categories/categories.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { GamesModule } from './modules/games/games.module';
       },
     }),
     GamesModule,
+    CategoriesModule,
   ],
   controllers: [AppController],
   providers: [
