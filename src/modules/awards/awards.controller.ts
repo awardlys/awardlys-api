@@ -25,6 +25,11 @@ export class AwardsController {
     return this.service.list();
   }
 
+  @Get(':awardId')
+  get(@Param('awardId') awardId: string) {
+    return this.service.get(awardId);
+  }
+
   @Post()
   async create(@Body() body: CreateAwardInput) {
     this.logger.info({}, 'controller > awards > create');

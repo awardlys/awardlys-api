@@ -12,6 +12,21 @@ export class AwardsService {
     private readonly repository: AwardsRepository,
   ) {}
 
+  async get(id: string) {
+    try {
+      this.logger.info({}, 'services > awards > get > params');
+
+      const output = await this.repository.get(id);
+
+      this.logger.info({}, 'services > awards > get > success');
+
+      return output;
+    } catch (error) {
+      this.logger.error(error, 'services > awards > get > exeception');
+      throw error;
+    }
+  }
+
   async list() {
     try {
       this.logger.info({}, 'services > awards > list > params');
