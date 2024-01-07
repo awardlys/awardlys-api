@@ -7,6 +7,10 @@ import { LoggerModule } from 'nestjs-pino';
 import { APP_PIPE } from '@nestjs/core';
 import { GamesModule } from './modules/games/games.module';
 import { CategoriesModule } from './modules/categories/categories.module';
+import { AccountsModule } from './modules/accounts/accounts.module';
+import * as dotenv from 'dotenv';
+import { AuthModule } from './modules/authentication/auth.module';
+dotenv.config();
 
 @Module({
   imports: [
@@ -28,6 +32,8 @@ import { CategoriesModule } from './modules/categories/categories.module';
     }),
     GamesModule,
     CategoriesModule,
+    AccountsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [
