@@ -28,9 +28,6 @@ export class AccountsRepository {
       const account = await this.db.account.findUnique({
         where: { username },
       });
-      console.log(
-        '================================================ ' + account,
-      );
       return account;
     } catch (error) {
       this.logger.error(
