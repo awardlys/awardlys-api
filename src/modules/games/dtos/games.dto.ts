@@ -21,9 +21,9 @@ export class CreateGameInput {
   /**
    * Campo do tipo enum utilizado para definir qual plataforma/plataformas são compatíveis com o jogo.
    * - Estrutura:
-   *  - 0 - Windows,
-   *  - 1 - Mac,
-   *  - 2 - Linux.
+   *  - windows
+   *  - mac,
+   *  - Linux.
    * @example 2
    */
   @IsEnum(GamePlatform)
