@@ -12,7 +12,9 @@ import {
 import { GamesService } from './games.service';
 import { CreateGameInput, UpdateGameInput } from './dtos/games.dto';
 import { LoggerService } from '../logger/logger.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('games')
 @Controller('games')
 export class GamesController {
   constructor(

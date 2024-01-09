@@ -12,7 +12,9 @@ import {
 import { AwardsService } from './awards.service';
 import { CreateAwardInput, UpdateAwardInput } from './dtos/awards.dto';
 import { LoggerService } from '../logger/logger.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('awards')
 @Controller('awards')
 export class AwardsController {
   constructor(

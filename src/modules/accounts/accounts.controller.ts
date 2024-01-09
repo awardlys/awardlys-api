@@ -17,7 +17,9 @@ import {
   UpdateAccountsInput,
 } from './dtos/accounts.dto';
 import { AuthService } from '../authentication/auth.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('accounts')
 @Controller('accounts')
 export class AccountsController {
   constructor(
