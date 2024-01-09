@@ -9,9 +9,9 @@ export type GameProps = {
 };
 
 export enum GamePlatform {
-  windows,
-  mac,
-  linux,
+  windows = 'windows',
+  mac = 'mac',
+  linux = 'linux',
 }
 
 export enum GameStatus {
