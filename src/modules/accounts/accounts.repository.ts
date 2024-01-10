@@ -28,6 +28,11 @@ export class AccountsRepository {
       const account = await this.db.account.findUnique({
         where: { username },
       });
+
+      if (!account) {
+        return undefined;
+      }
+
       return account;
     } catch (error) {
       this.logger.error(
@@ -43,6 +48,10 @@ export class AccountsRepository {
       const user = await this.db.account.findUnique({
         where: { email },
       });
+
+      if (!email) {
+        return undefined;
+      }
 
       return user;
     } catch (error) {

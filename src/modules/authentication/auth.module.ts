@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { JwtStrategy } from './jwt.strategy';
+import { JwtStrategy } from './estrategies/jwt.strategy';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import * as dotenv from 'dotenv';
@@ -17,9 +17,9 @@ dotenv.config();
       defaultStrategy: 'jwt',
     }),
     JwtModule.register({
-      secret: 'process.env.JWT_SECRET',
+      secret: process.env.JWT_SECRET,
       signOptions: {
-        expiresIn: '50s',
+        expiresIn: process.env.JWT_EXPIRES_IN,
       },
     }),
     AccountsModule,

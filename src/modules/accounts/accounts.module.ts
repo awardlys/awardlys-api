@@ -9,6 +9,7 @@ import { DatabaseService } from '../database/database.service';
 import { LoginAccountInput } from './dtos/accounts.dto';
 import { AuthService } from '../authentication/auth.service';
 import { JwtService } from '@nestjs/jwt';
+import { JwtStrategy } from '../authentication/estrategies/jwt.strategy';
 
 @Module({
   imports: [LoggerModule, DatabaseModule],
@@ -21,6 +22,7 @@ import { JwtService } from '@nestjs/jwt';
     LoginAccountInput,
     AuthService,
     JwtService,
+    JwtStrategy,
   ],
   exports: [AccountsService],
 })

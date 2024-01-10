@@ -13,14 +13,16 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async login(loginAccount: LoginAccountInput): Promise<any> {
-    const account = await this.accountsService.findByUsername(
-      loginAccount.username,
-    );
+  async login(loginAccount: LoginAccountInput) {
+    const account = await this.accountsService.findByEmail(loginAccount.email);
 
     if (!account) {
       throw new UnauthorizedException('User or Password is invalid');
     }
+    console.log(loginAccount.email);
+    console.log(loginAccount.passwordHash);
+    console.log(account.email);
+    console.log(account.passwordHash);
 
     const validatePassword = await bcrypt.compare(
       loginAccount.passwordHash,
@@ -37,10 +39,10 @@ export class AuthService {
   async tokenGenerate(payload: LoginAccountInput) {
     return {
       access_token: this.jwtService.sign(
-        { username: payload.username },
+        { email: payload.email },
         {
-          secret: 'process.env.JWT_SECRET',
-          expiresIn: '50s',
+          secret: process.env.JWT_SECRET,
+          expiresIn: process.env.JWT_EXPIRES_IN,
         },
       ),
     };
