@@ -49,7 +49,7 @@ export class AccountsController {
   @Get('/:accountId')
   async get(@Param('accountId') accountId: string) {
     this.logger.info({}, 'controller > accounts > get');
-    return await this.service.findById(accountId);
+    return this.service.findById(accountId);
   }
 
   @Post()
