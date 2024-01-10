@@ -10,6 +10,7 @@ import { CategoriesModule } from './modules/categories/categories.module';
 import { AccountsModule } from './modules/accounts/accounts.module';
 import * as dotenv from 'dotenv';
 import { AuthModule } from './modules/authentication/auth.module';
+import { AwardCategoriesModule } from './modules/award-categories/award-categories.module';
 dotenv.config();
 
 @Module({
@@ -34,6 +35,7 @@ dotenv.config();
     CategoriesModule,
     AccountsModule,
     AuthModule,
+    AwardCategoriesModule,
   ],
   controllers: [AppController],
   providers: [
