@@ -58,6 +58,25 @@ export class AccountsService {
     }
   }
 
+  async findByEmail(email: string) {
+    try {
+      this.logger.info({}, 'services > accounts > findByEmail > params');
+
+      const account = await this.repository.findByEmail(email);
+
+      this.logger.info(account, 'account');
+
+      if (!account) {
+        throw new NotFoundException('Account Not Found');
+      }
+
+      return account;
+    } catch (error) {
+      this.logger.error(error, 'services > accounts > findByEmail > exception');
+      throw error;
+    }
+  }
+
   async list() {
     try {
       this.logger.info({}, 'services > accounts > list > params');

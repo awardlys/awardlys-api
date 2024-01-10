@@ -15,7 +15,6 @@ async function bootstrap() {
     .setTitle(process.env.SWAGGER_API_TITLE)
     .setDescription(process.env.SWAGGER_API_DESCRIPTION)
     .setVersion(process.env.SWAGGER_API_VERSION)
-    .setBasePath(process.env.API_PREFIX_PATH)
     .addTag('accounts')
     .addTag('awards')
     .addTag('categories')

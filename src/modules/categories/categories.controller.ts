@@ -8,6 +8,7 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { LoggerService } from '../logger/logger.service';
 import { CategoriesService } from './categories.service';
@@ -16,7 +17,9 @@ import {
   UpdateCategoryInput,
 } from './dtos/categories.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from '../authentication/auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @ApiTags('categories')
 @Controller('categories')
 export class CategoriesController {

@@ -69,7 +69,7 @@ export class LoginAccountInput {
    */
   @IsString()
   @IsNotEmpty()
-  username: string;
+  email: string;
 
   /**
    * - Campo utilizado para receber a senha da conta.

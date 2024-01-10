@@ -8,12 +8,15 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { GamesService } from './games.service';
 import { CreateGameInput, UpdateGameInput } from './dtos/games.dto';
 import { LoggerService } from '../logger/logger.service';
 import { ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from '../authentication/auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @ApiTags('games')
 @Controller('games')
 export class GamesController {
