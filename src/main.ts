@@ -20,6 +20,7 @@ async function bootstrap() {
     .addTag('categories')
     .addTag('games')
     .addTag('awardCategories')
+    .addTag('game-categories')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup(process.env.API_PREFIX_PATH, app, document);

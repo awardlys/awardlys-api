@@ -49,7 +49,7 @@ export class GamesController {
     this.logger.info({}, 'controller > games > update');
   }
 
-  @Delete(':gameId')
+  @Delete('/:gameId')
   @HttpCode(HttpStatus.NO_CONTENT)
   async delete(@Param('gameId') gameId: string) {
     await this.service.delete(gameId);

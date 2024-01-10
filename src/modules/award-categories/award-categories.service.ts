@@ -24,7 +24,7 @@ export class AwardCategoriesService {
       this.logger.info({}, 'services > awardCategories > list > success');
 
       return {
-        games: output,
+        awardCategories: output,
       };
     } catch (error) {
       this.logger.error(
@@ -70,7 +70,7 @@ export class AwardCategoriesService {
       this.logger.info(entity, 'entity');
 
       if (!entity) {
-        throw new NotFoundException('Game not found');
+        throw new NotFoundException('awardCategory not found');
       }
 
       Object.assign(entity, input);
