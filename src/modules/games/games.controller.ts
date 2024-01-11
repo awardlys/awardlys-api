@@ -16,7 +16,7 @@ import { LoggerService } from '../logger/logger.service';
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../authentication/auth.guard';
 
-@UseGuards(JwtAuthGuard)
+//@UseGuards(JwtAuthGuard)
 @ApiTags('games')
 @Controller('games')
 export class GamesController {
@@ -49,7 +49,7 @@ export class GamesController {
     this.logger.info({}, 'controller > games > update');
   }
 
-  @Delete(':gameId')
+  @Delete('/:gameId')
   @HttpCode(HttpStatus.NO_CONTENT)
   async delete(@Param('gameId') gameId: string) {
     await this.service.delete(gameId);

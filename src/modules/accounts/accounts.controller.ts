@@ -38,14 +38,14 @@ export class AccountsController {
     return this.authService.login(body);
   }
 
-  @UseGuards(JwtAuthGuard)
+  //@UseGuards(JwtAuthGuard)
   @Get()
   list() {
     this.logger.info({}, 'controller > accounts > list');
     return this.service.list();
   }
 
-  @UseGuards(JwtAuthGuard)
+  //@UseGuards(JwtAuthGuard)
   @Get('/:accountId')
   async get(@Param('accountId') accountId: string) {
     this.logger.info({}, 'controller > accounts > get');
@@ -61,7 +61,7 @@ export class AccountsController {
     this.logger.info({}, 'controller ? accounts > create > success');
   }
 
-  @UseGuards(JwtAuthGuard)
+  //@UseGuards(JwtAuthGuard)
   @Patch('/:accountId')
   @HttpCode(HttpStatus.NO_CONTENT)
   async update(
@@ -75,7 +75,7 @@ export class AccountsController {
     this.logger.info({}, 'controller > accounts > update');
   }
 
-  @UseGuards(JwtAuthGuard)
+  //@UseGuards(JwtAuthGuard)
   @Delete('/:accountId')
   @HttpCode(HttpStatus.NO_CONTENT)
   async delete(@Param('accountId') accountId: string) {

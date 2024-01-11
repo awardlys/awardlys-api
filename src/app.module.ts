@@ -8,9 +8,10 @@ import { APP_PIPE } from '@nestjs/core';
 import { GamesModule } from './modules/games/games.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { AccountsModule } from './modules/accounts/accounts.module';
-import * as dotenv from 'dotenv';
 import { AuthModule } from './modules/authentication/auth.module';
-dotenv.config();
+import { AwardCategoriesModule } from './modules/award-categories/award-categories.module';
+import { GameCategoriesModule } from './modules/game-categories/game-categories.module';
+import { PollModule } from './modules/poll/poll.module';
 
 @Module({
   imports: [
@@ -34,6 +35,9 @@ dotenv.config();
     CategoriesModule,
     AccountsModule,
     AuthModule,
+    AwardCategoriesModule,
+    GameCategoriesModule,
+    PollModule,
   ],
   controllers: [AppController],
   providers: [
