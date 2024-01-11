@@ -19,7 +19,7 @@ import {
   UpdateGameCategoriesInput,
 } from './dtos/game-categories.dto';
 
-@UseGuards(JwtAuthGuard)
+//@UseGuards(JwtAuthGuard)
 @ApiTags('game-categories')
 @Controller('game-categories')
 export class GameCategoriesController {
