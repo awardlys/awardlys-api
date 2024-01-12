@@ -1,36 +1,25 @@
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateCategoryInput {
-  /**
-   * Campo utilizado para definir o nome da categoria.
-   * @example "Jogos de sobrevivência em mundo aberto."
-   */
+  @ApiProperty()
   @IsString()
   @IsNotEmpty()
   name: string;
 
-  /**
-   * Campo utilizado para descrição da categoria.
-   * @example "Descrição da categoria."
-   */
+  @ApiProperty()
   @IsString()
   @IsNotEmpty()
   description: string;
 }
 
 export class UpdateCategoryInput {
-  /**
-   * Campo utilizado para definir o nome da categoria.
-   * @example "Jogos de sobrevivência em mundo aberto."
-   */
+  @ApiPropertyOptional()
   @IsString()
   @IsOptional()
   name?: string;
 
-  /**
-   * Campo utilizado para descrição da categoria.
-   * @example "Descrição da categoria."
-   */
+  @ApiPropertyOptional()
   @IsString()
   @IsOptional()
   description?: string;

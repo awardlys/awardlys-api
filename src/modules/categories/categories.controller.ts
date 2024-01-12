@@ -19,7 +19,7 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../authentication/auth.guard';
 
-//@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard)
 @ApiTags('categories')
 @Controller('categories')
 export class CategoriesController {

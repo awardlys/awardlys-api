@@ -16,7 +16,7 @@ import { LoggerService } from '../logger/logger.service';
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../authentication/auth.guard';
 
-//@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard)
 @ApiTags('awards')
 @Controller('awards')
 export class AwardsController {

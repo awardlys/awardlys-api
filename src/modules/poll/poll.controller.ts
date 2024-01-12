@@ -16,7 +16,7 @@ import { LoggerService } from '../logger/logger.service';
 import { PollService } from './poll.service';
 import { CreatePollInput, UpdatePollInput } from './dtos/poll.dto';
 
-//@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard)
 @ApiTags('poll')
 @Controller('poll')
 export class PollController {

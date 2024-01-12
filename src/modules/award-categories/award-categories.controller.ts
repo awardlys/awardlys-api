@@ -19,7 +19,7 @@ import {
   UpdateAwardCategoriesInput,
 } from './dtos/award-categories.dto';
 
-//@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard)
 @ApiTags('awardCategories')
 @Controller('award-categories')
 export class AwardCategoriesController {
