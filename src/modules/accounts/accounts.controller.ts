@@ -20,7 +20,6 @@ import {
 import { AuthService } from '../authentication/auth.service';
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../authentication/auth.guard';
-import { JwtStrategy } from '../authentication/estrategies/jwt.strategy';
 
 @ApiTags('accounts')
 @Controller('accounts')
@@ -29,7 +28,6 @@ export class AccountsController {
     private readonly logger: LoggerService,
     private readonly service: AccountsService,
     private readonly authService: AuthService,
-    private readonly jwtStrategy: JwtStrategy,
   ) {}
 
   @Post('/login')
@@ -38,14 +36,14 @@ export class AccountsController {
     return this.authService.login(body);
   }
 
-  //@UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get()
   list() {
     this.logger.info({}, 'controller > accounts > list');
     return this.service.list();
   }
 
-  //@UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get('/:accountId')
   async get(@Param('accountId') accountId: string) {
     this.logger.info({}, 'controller > accounts > get');
@@ -61,7 +59,7 @@ export class AccountsController {
     this.logger.info({}, 'controller ? accounts > create > success');
   }
 
-  //@UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Patch('/:accountId')
   @HttpCode(HttpStatus.NO_CONTENT)
   async update(
@@ -75,7 +73,7 @@ export class AccountsController {
     this.logger.info({}, 'controller > accounts > update');
   }
 
-  //@UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Delete('/:accountId')
   @HttpCode(HttpStatus.NO_CONTENT)
   async delete(@Param('accountId') accountId: string) {
