@@ -9,6 +9,7 @@ import { CreateAccountInput, UpdateAccountsInput } from './dtos/accounts.dto';
 import { randomUUID } from 'crypto';
 import { AccountEntity } from './accounts.entity';
 import * as bcrypt from 'bcrypt';
+import { AccountsMapper } from './accounts.mapper';
 
 @Injectable()
 export class AccountsService {
@@ -29,7 +30,7 @@ export class AccountsService {
         throw new NotFoundException('Account not found');
       }
 
-      return entity;
+      return AccountsMapper.toDto(entity);
     } catch (error) {
       this.logger.error(error, 'services > accounts > findById > exception');
       throw error;
