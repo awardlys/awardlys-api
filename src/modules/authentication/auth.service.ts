@@ -29,10 +29,12 @@ export class AuthService {
       throw new UnauthorizedException('User or Password is invalid');
     }
 
-    return await this.tokenGenerate(account);
+    return this.tokenGenerate(account);
   }
 
   async tokenGenerate(payload: LoginAccountInput) {
+    delete payload.passwordHash;
+
     return {
       access_token: this.jwtService.sign(
         { email: payload.email },
@@ -41,6 +43,7 @@ export class AuthService {
           expiresIn: process.env.JWT_EXPIRES_IN,
         },
       ),
+      account: payload,
     };
   }
 }
