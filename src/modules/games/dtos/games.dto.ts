@@ -38,10 +38,12 @@ export class UpdateGameInput {
   @ApiPropertyOptional({ enum: GamePlatform })
   @IsEnum(GamePlatform)
   @IsOptional()
+  @IsNotEmpty()
   platform?: keyof typeof GamePlatform;
 
   @ApiPropertyOptional()
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   image_url?: string;
 }

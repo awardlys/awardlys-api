@@ -27,10 +27,12 @@ export class UpdateAwardInput {
   @ApiPropertyOptional()
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   subTitle?: string;
 
   @ApiPropertyOptional()
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   description?: string;
 }

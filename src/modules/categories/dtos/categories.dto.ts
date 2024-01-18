@@ -17,10 +17,12 @@ export class UpdateCategoryInput {
   @ApiPropertyOptional()
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   name?: string;
 
   @ApiPropertyOptional()
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   description?: string;
 }

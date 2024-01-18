@@ -17,10 +17,12 @@ export class UpdateAwardCategoriesInput {
   @ApiPropertyOptional()
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   awardId?: string;
 
   @ApiPropertyOptional()
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   categoryId?: string;
 }
