@@ -17,10 +17,12 @@ export class UpdatePollInput {
   @ApiPropertyOptional()
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   accountId?: string;
 
   @ApiPropertyOptional()
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   gameCategoryId?: string;
 }
