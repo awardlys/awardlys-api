@@ -23,26 +23,6 @@ export class AccountsRepository {
     }
   }
 
-  async findByUsername(username: string) {
-    try {
-      const account = await this.db.account.findUnique({
-        where: { username },
-      });
-
-      if (!account) {
-        return undefined;
-      }
-
-      return account;
-    } catch (error) {
-      this.logger.error(
-        error,
-        'AccountsRepository > findUsernameExists > exception',
-      );
-      throw error;
-    }
-  }
-
   async findByEmail(email: string) {
     try {
       const user = await this.db.account.findUnique({

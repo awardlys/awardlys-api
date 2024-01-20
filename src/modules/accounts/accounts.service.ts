@@ -37,28 +37,6 @@ export class AccountsService {
     }
   }
 
-  async findByUsername(username: string) {
-    try {
-      this.logger.info({}, 'services > accounts > findByUsername > params');
-
-      const account = await this.repository.findByUsername(username);
-
-      this.logger.info(account, 'account');
-
-      if (!account) {
-        throw new NotFoundException('Account Not Found');
-      }
-
-      return account;
-    } catch (error) {
-      this.logger.error(
-        error,
-        'services > accounts > findByUsername > exception',
-      );
-      throw error;
-    }
-  }
-
   async findByEmail(email: string) {
     try {
       this.logger.info({}, 'services > accounts > findByEmail > params');
@@ -99,14 +77,9 @@ export class AccountsService {
     try {
       this.logger.info(input, 'services > accounts > create > params');
 
-      const usernameExists = await this.repository.findByUsername(
-        input.username,
-      );
       const emailExists = await this.repository.findByEmail(input.email);
 
-      if (usernameExists) {
-        throw new ConflictException('Username already exists');
-      } else if (emailExists) {
+      if (emailExists) {
         throw new ConflictException('Email already exists');
       }
 
